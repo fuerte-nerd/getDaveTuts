@@ -5,7 +5,8 @@ $secondary: #61d085;
 // $danger: ;
 $light: #fafafa;
 $dark: #121212;
-
+$font-size-base: 18;
+// $enable-responsive-font-sizes: true;
 // $enable-rounded: false;
 
 $body-bg: $secondary;
@@ -21,27 +22,27 @@ $font-family-monospace: "Source Code Pro";
 @import "../../node_modules/animate.css/animate";
 
 html {
-  font-size: 18px;
+  // font-size: 18px !important;
 }
 
-*{
-    cursor: default;
+* {
+  cursor: default;
 }
 
-a{
-    cursor: pointer;
+a {
+  cursor: pointer;
 }
 
-pre{
+pre {
   background-color: lighten($dark, 15%);
   padding: 3rem;
-  border-radius: .25rem;
-  box-shadow: 0 0rem .45rem inset $dark;
+  border-radius: 0.25rem;
+  box-shadow: 0 0rem 0.45rem inset $dark;
   color: $light;
 }
 
-code{
-  white-space : pre-wrap !important;
+code {
+  white-space: pre-wrap !important;
   font-weight: 600;
 }
 
@@ -51,8 +52,7 @@ blockquote {
   padding: 2rem;
   margin-bottom: 1rem;
   text-align: justify;
-  border-radius: .25rem;
-
+  border-radius: 0.25rem;
 
   & p {
     padding: 0;
@@ -60,9 +60,8 @@ blockquote {
   }
 }
 
-
-.pointer{
-    cursor: pointer !important;
+.pointer {
+  cursor: pointer !important;
 }
 
 .text-cursor {
@@ -71,25 +70,28 @@ blockquote {
 
 .navbar-toggler {
   transition: all 0.15s;
+  &-icon{
+    cursor: pointer !important;
+  }
 }
 
 .nav-link {
-  transition: transform 0.15s;
+  transition: transform 0.15s !important;
 }
 
 .anchor {
   margin-top: -48px;
   top: 0;
 
-  &-archive{
-      margin-top: -28px;
-      top: 0;
+  &-archive {
+    margin-top: -28px;
+    top: 0;
   }
 }
 
 .cmp {
   &_navbar {
-    transition: background-color 0.25s;
+    transition: background-color 0.25s !important;
   }
 
   &_brand {
@@ -116,47 +118,33 @@ blockquote {
   }
 
   &_tuts-bg {
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.9),
-        rgba(0, 0, 0, 0.7)
-      );
-      // url("./imgs/archive.jpg");
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+    // url("./imgs/archive.jpg");
     background-size: cover;
     background-position: center;
   }
 
   &_facebook-btn {
-      font-size: 2rem;
+    font-size: 2rem;
   }
 
-  &_tutorial-content p{
-    padding: .5rem 0;
+  &_tutorial-content p {
+    padding: 0.5rem 0;
   }
 }
 
-td{
-    cursor: pointer !important;
-}
-
-// .share-btn > a {
-//   border: 1px solid #ccc;
-//   padding: 5px;
-//   font-size: 12px;
-//   font-family: Verdana, Arial;
-// }
-// .share-btn > a:hover {
-//   cursor: pointer;
-// }
-
-@media (max-width: 1250px) {
-  html {
-    font-size: 14px;
-  }
+td {
+  cursor: pointer !important;
 }
 
 @media (max-width: 500px) {
   html {
-    font-size: 13.5px;
+    font-size: 13.5px !important;
+  }
+}
+
+@media (max-width: 1250px) {
+  html {
+    font-size: 14px !important;
   }
 }

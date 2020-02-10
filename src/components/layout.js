@@ -13,10 +13,10 @@ export default function Layout({ children }) {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Chewy|Noto+Sans+SC"
         />
-        <script
+        {/* <script
           src="https://kit.fontawesome.com/e6cbd84bc2.js"
           crossorigin="anonymous"
-        ></script>
+        ></script> */}
       </Helmet>
       {children}
       <Scripts />
