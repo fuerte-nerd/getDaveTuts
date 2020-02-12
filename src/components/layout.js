@@ -4,6 +4,7 @@ import Helmet from "react-helmet"
 import "./styles.scss"
 
 import Scripts from "./scripts"
+import Footer from "./Footer"
 
 export default function Layout({ children }) {
   return (
@@ -19,6 +20,7 @@ export default function Layout({ children }) {
         ></script>
       </Helmet>
       {children}
+      <Footer />
       <Scripts />
     </>
   )

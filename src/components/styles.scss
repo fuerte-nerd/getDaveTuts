@@ -18,6 +18,8 @@ $headings-font-family: "chewy";
 
 $font-family-monospace: "Source Code Pro";
 
+$navbar-nav-link-padding-x: 1rem;
+
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../../node_modules/animate.css/animate";
 
@@ -70,12 +72,12 @@ blockquote {
 
 .navbar-toggler {
   transition: all 0.15s;
-  &-icon{
+  &-icon {
     cursor: pointer !important;
   }
 }
 
-.nav-link {
+.nav-link, .dropdown-item {
   transition: transform 0.15s !important;
 }
 

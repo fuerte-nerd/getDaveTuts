@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react"
 import {
   Collapse,
   Navbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -16,9 +14,6 @@ import {
 import * as Scroll from "react-scroll"
 
 export default function NavBar(props) {
-  // const [isOpen, setIsOpen] = useState(false)
-  // const toggle = () => setIsOpen(!isOpen)
-
   const initialState = {
     addClasses: "bg-transparent",
     scaling: 1,
@@ -55,21 +50,7 @@ export default function NavBar(props) {
     window.addEventListener("scroll", checkWindowState)
     window.addEventListener("resize", checkWindowState)
     checkWindowState()
-
-    Scroll.Events.scrollEvent.register("begin", function(to, element) {
-      console.log("begin", arguments)
-    })
-
-    Scroll.Events.scrollEvent.register("end", function(to, element) {
-      console.log("end", arguments)
-    })
-
-    Scroll.scrollSpy.update()
   }, [])
-
-  const test = a => {
-    console.log(a)
-  }
 
   return (
     <div>
@@ -92,11 +73,6 @@ export default function NavBar(props) {
             getDaveTuts
           </div>
         </Scroll.Link>
-        {/* <a className="navbar-brand text-primary p-0 m-0" href="#home">
-          <div className={`${navBarProps.logoClass} cmp_brand p-0 m-0 pointer`}>
-            getDaveTuts
-          </div>
-        </a> */}
         <button
           className="navbar-toggler bg-light border border-primary p-2"
           type="button"
@@ -121,7 +97,7 @@ export default function NavBar(props) {
           navbar
           className={`${navBarProps.collapseClasses} text-center rounded`}
         >
-          <Nav className="ml-auto nav-fill w-100" navbar>
+          <Nav className="ml-auto" navbar>
             <NavItem>
               <Scroll.Link
                 activeClass="active"
@@ -134,6 +110,7 @@ export default function NavBar(props) {
                 style={{
                   transform: `scale(${navBarProps.scaling})`,
                 }}
+                onClick={props.toggle}
               >
                 Home
               </Scroll.Link>
@@ -150,19 +127,27 @@ export default function NavBar(props) {
                 style={{
                   transform: `scale(${navBarProps.scaling})`,
                 }}
+                onClick={props.toggle}
               >
                 The Tuts
               </Scroll.Link>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="#contact"
+            <Scroll.Link
+                activeClass="active"
+                className="nav-link"
+                smooth={true}
+                spy={true}
+                offset={-43}
+                duration={400}
+                to="contact"
                 style={{
                   transform: `scale(${navBarProps.scaling})`,
                 }}
+                onClick={props.toggle}
               >
                 Contact
-              </NavLink>
+              </Scroll.Link>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle
@@ -175,13 +160,31 @@ export default function NavBar(props) {
                 Find me
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>
+                <DropdownItem
+                  style={{
+                    transform: `scale(${navBarProps.scaling})`,
+                  }}
+                  onClick={props.toggle}
+                >
+                  <i class="fab fa-facebook mr-2 pointer" />
                   <a href="#">Facebook</a>
                 </DropdownItem>
-                <DropdownItem>
+                <DropdownItem
+                  style={{
+                    transform: `scale(${navBarProps.scaling})`,
+                  }}
+                  onClick={props.toggle}
+                >
+                  <i class="fab fa-github mr-2 pointer" />
                   <a href="#">GitHub</a>
                 </DropdownItem>
-                <DropdownItem>
+                <DropdownItem
+                  style={{
+                    transform: `scale(${navBarProps.scaling})`,
+                  }}
+                  onClick={props.toggle}
+                >
+                  <i class="fab fa-instagram mr-2 pointer" />
                   <a href="#">Instagram</a>
                 </DropdownItem>
               </DropdownMenu>

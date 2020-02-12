@@ -7,11 +7,15 @@ import NavBar from "../components/NavBar"
 
 import Hero from "../components/heroSection"
 import Tuts from "../components/tutsSection"
-
+import Contact from "../components/contactSection"
 
 export default function Index() {
   const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => setIsOpen(!isOpen)
+  const toggle = () => {
+    if (window.innerWidth < 992) {
+      setIsOpen(!isOpen)
+    }
+  }
 
   const checkNav = () => {
     if (isOpen) {
@@ -26,6 +30,7 @@ export default function Index() {
       <div onClick={checkNav}>
         <Hero />
         <Tuts />
+        <Contact />
       </div>
     </Layout>
   )
