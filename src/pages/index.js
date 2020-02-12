@@ -1,21 +1,32 @@
-import React from 'react'
+import React, { useState } from "react"
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 
-import NavBar from '../components/NavBar'
+import NavBar from "../components/NavBar"
 
-import { Container } from 'reactstrap'
+import Hero from "../components/heroSection"
+import Tuts from "../components/tutsSection"
+
 
 export default function Index() {
-    return (
-        <Layout>
-            <SEO title="Home" />
-            <NavBar />
-            <Container>
-                <div className="min-vh-100"></div>
-                <div className="min-vh-100"></div>
-            </Container>
-        </Layout>
-    )
+  const [isOpen, setIsOpen] = useState(false)
+  const toggle = () => setIsOpen(!isOpen)
+
+  const checkNav = () => {
+    if (isOpen) {
+      setIsOpen(false)
+    }
+  }
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <NavBar isOpen={isOpen} toggle={toggle} />
+      <div onClick={checkNav}>
+        <Hero />
+        <Tuts />
+      </div>
+    </Layout>
+  )
 }

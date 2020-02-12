@@ -5,7 +5,7 @@ $secondary: #61d085;
 // $danger: ;
 $light: #fafafa;
 $dark: #121212;
-$font-size-base: 18;
+// $font-size-base: 19;
 // $enable-responsive-font-sizes: true;
 // $enable-rounded: false;
 
@@ -22,7 +22,7 @@ $font-family-monospace: "Source Code Pro";
 @import "../../node_modules/animate.css/animate";
 
 html {
-  // font-size: 18px !important;
+  font-size: 18px !important;
 }
 
 * {
