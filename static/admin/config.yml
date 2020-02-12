@@ -48,16 +48,17 @@ collections:
           - { name: lead, label: Lead, widget: text }
           - { name: contact_form_intro, label: Contact Form Intro, widget: text }
           - { name: send_button_text, label: Send Button Text, widget: string }
-  - name: blog
-    label: Blog
-    folder: blog
+  - name: tutorials
+    label: Tutorials
+    folder: tutorials
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
       preview: false
     fields:
-      - { name: path, label: Path }
       - { name: featured_image, label: Image, widget: image }
       - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
+      - { name: intro_text, label: Intro Text }
+      - { name: tags, label: Tags, widget: list, default: ['unspecified']}
       - { name: body, label: Body, widget: markdown }
