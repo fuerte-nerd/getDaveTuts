@@ -47,7 +47,7 @@ collections:
           - { name: followup_text, label: Follow-up Text, widget: text }
           - { name: followup_button_text, label: Follow-up Button Text, widget: string }
       - label: "Tuts Pages"
-        name: "tuts"
+        name: "tuts_pages"
         file: "content/tuts_pages.md"
         editor:
           preview: false
