@@ -1,47 +1,55 @@
 import React from "react"
+import { Container, Row, Col, Button } from "reactstrap"
 
 export default function contactSection(props) {
   return (
-    <section className="min-vh-100 d-flex align-items-center bg-light text-primary position-relative shadow" id="contact">
-      <div className="container py-5">
+    <section
+      className="min-vh-100 d-flex align-items-center bg-light text-primary position-relative shadow"
+      id="contact"
+    >
+      <Container className="py-5">
         <h2 className="display-3">{props.cms.heading}</h2>
-        <p className="lead">
-          {props.cms.lead}
-        </p>
-        <div className="row">
-          <div className="col">
-            <a
+        <p className="lead">{props.cms.lead}</p>
+        <Row>
+          <Col md={4}>
+            <Button
               href={`mailto:${props.cms.email}`}
-              className="btn btn-primary shadow-sm btn-block p-4"
+              color="primary"
+              className="shadow-sm p-4 mb-md-0 mb-1"
+              block
             >
-              <i className="far fa-envelope cmp_contact-btn pointer"></i>
+              <i className="fas fa-envelope cmp_contact-btn pointer"></i>
               <span className="font-weight-bold pointer">Email</span>
-            </a>
-          </div>
-          <div className="col">
-            <a
+            </Button>
+          </Col>
+          <Col md={4}>
+            <Button
               href={`https://wa.me/${props.cms.phone}`}
-              className="btn btn-primary shadow-sm btn-block p-4"
+              color="primary"
+              className="shadow-sm p-4 mb-md-0 mb-1"
+              block
             >
               <i className="fab fa-whatsapp cmp_contact-btn pointer"></i>
               <span className="font-weight-bold pointer">WhatsApp</span>
-            </a>
-          </div>
-          <div className="col">
-            <a
-              href={`http://m.me/${props.cms.facebook}`}
-              className="btn btn-primary shadow-sm btn-block p-4"
+            </Button>
+          </Col>
+          <Col md={4}>
+            <Button
+              href={`https://wa.me/${props.cms.facebook}`}
+              color="primary"
+              className="shadow-sm p-4"
+              block
             >
               <i className="fab fa-facebook-messenger cmp_contact-btn pointer"></i>
               <span className="font-weight-bold pointer">Messenger</span>
-            </a>
-          </div>
-        </div>
+            </Button>
+          </Col>
+        </Row>
+
         <div className="bg-secondary text-primary p-4 mt-3 rounded">
-          <small>
-            {props.cms.contact_form_intro}
-          </small>
-          <form action="" className="mt-3">
+          {props.cms.contact_form_intro}
+          <hr />
+          <form name="contact" method="POST" data-netlify="true" className="mt-3">
             <div className="row">
               <div className="col-md-6">
                 <div className="form-group">
@@ -79,12 +87,15 @@ export default function contactSection(props) {
               </div>
             </div>
             <button className="btn btn-primary btn-block">
-              <span className="font-weight-bold mr-2 pointer">{props.cms.send_button_text}</span>
+              <span className="font-weight-bold mr-2 pointer">
+                {props.cms.send_button_text}
+              </span>
               <i className="far fa-paper-plane pointer"></i>
             </button>
           </form>
         </div>
-      </div>
+        {/* </div> */}
+      </Container>
     </section>
   )
 }

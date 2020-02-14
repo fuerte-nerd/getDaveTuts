@@ -3,6 +3,8 @@
 - [x] fix the scroll down button for landscape phone
 - [x] make the index template go to root instead of test
 - [x] bring in the layout for the tutorials template
-- [ ] create the getDaveTuts logo
-- [ ] make the intro text for the contact form bigger
+- [x] create the getDaveTuts logo
+- [x] split the contact buttons on mobile view (grid)
+- [x] make the intro text for the contact form bigger
 - [ ] hook up contact form to netlify form functions
+- [ ] bring in react-reveal

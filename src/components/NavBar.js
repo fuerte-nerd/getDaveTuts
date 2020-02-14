@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { graphql } from "gatsby"
+import Img from 'gatsby-image'
 import {
   Collapse,
   Navbar,
@@ -19,6 +19,7 @@ export default function NavBar(props) {
     addClasses: "bg-transparent",
     scaling: 1,
     logoClass: "h3",
+    logoSpanClass: "text-light",
     togglerFontSize: "1.5rem",
     collapseClasses: "",
     navPadding: 2,
@@ -39,6 +40,7 @@ export default function NavBar(props) {
         addClasses: "bg-light shadow-sm",
         scaling: 0.9,
         logoClass: "h4",
+        logoSpanClass: "text-secondary",
         togglerFontSize: "1.1rem",
         navPadding: 1,
       })
@@ -53,6 +55,7 @@ export default function NavBar(props) {
     checkWindowState()
   }, [])
 
+  console.log(props.cms)
   return (
     <div>
       <Navbar
@@ -71,8 +74,9 @@ export default function NavBar(props) {
           to="home"
         >
           <div className={`${navBarProps.logoClass} cmp_brand p-0 m-0 pointer`}>
-            getDaveTuts
+            getDaveTuts<span className={`${navBarProps.logoSpanClass}`}>()</span>
           </div>
+          
         </Scroll.Link>
         <button
           className="navbar-toggler bg-light border border-primary p-2"

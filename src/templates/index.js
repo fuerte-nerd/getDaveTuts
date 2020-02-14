@@ -30,19 +30,25 @@ export default function Index({ data }) {
     hero_image: data.hero_image.childImageSharp.fixed,
   }
 
-  const tutsData = data.tuts_content.childMarkdownRemark.frontmatter
+  const tutsData = {
+    ...data.tuts_content.childMarkdownRemark.frontmatter,
+    ...data.social_settings.childMarkdownRemark.frontmatter
+  }
 
   const contactData = {
     ...data.contact_content.childMarkdownRemark.frontmatter,
     ...data.contact_settings.childMarkdownRemark.frontmatter,
   }
 
-  const socialData = data.social_settings.childMarkdownRemark.frontmatter
+  const navData = {
+    ...data.social_settings.childMarkdownRemark.frontmatter,
+    ...data.navbar_logo.childImageSharp
+  }
 
   return (
     <Layout>
       <SEO title="Home" />
-      <NavBar isOpen={isOpen} toggle={toggle} cms={socialData} />
+      <NavBar isOpen={isOpen} toggle={toggle} cms={navData} />
       <div onClick={checkNav}>
         <Hero cms={heroData} />
         <Tuts cms={tutsData} />
@@ -54,6 +60,13 @@ export default function Index({ data }) {
 
 export const query = graphql`
   query($hero_image: String!) {
+    navbar_logo: file(name: {eq: "navbarLogo"}) {
+      childImageSharp {
+        fixed(width: 300, quality: 100){
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     hero_content: file(
       sourceInstanceName: { eq: "content" }
       name: { eq: "hero" }

@@ -51,7 +51,7 @@ export default function TutsSection(props) {
             <h3 className="display-4 text-center">{props.cms.followup_heading}</h3>
             <p className="text-center">{props.cms.followup_text}</p>
             <div className="text-center">
-                <a href="archive.html" className="btn btn-primary d-inline-flex align-items-center">
+                <a href={props.cms.facebook} className="btn btn-primary d-inline-flex align-items-center">
                     <span className="font-weight-bold mr-2 pointer">
                         {props.cms.followup_button_text}</span>
                     <i className="fab fa-facebook-square  cmp_facebook-btn pointer"></i>

@@ -13,13 +13,13 @@ export default function HeroSection(props) {
       <div>
         <Container className="hero-content animated bounceInDown text-primary">
           <Img fixed={props.cms.hero_image} className="rounded-circle cmp_profile-pic" />
-          <h1 className="display-3 text-center">getDaveTuts</h1>
+          <h1 className="display-3 text-center">getDaveTuts<span className="text-light">()</span></h1>
           <p className="lead text-center">
             {props.cms.lead}
           </p>
           <div className="d-flex align-items-center justify-content-center animated fadeInUp delay-4s">
           <Scroll.Link
-            className="btn btn-sm btn-outline-primary text-primary cmp_scroll-down text-center animated flash slower infinite delay-5s d-flex align-items-center font-weight-bold"
+            className="btn btn-link text-primary cmp_scroll-down text-center animated flash slower infinite delay-5s d-flex align-items-center font-weight-bold"
             smooth={true}
             offset={-43}
             duration={400}

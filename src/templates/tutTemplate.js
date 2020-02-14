@@ -73,7 +73,7 @@ export const query = graphql`
     }
     featured_image: file(relativePath: { eq: $featured_image }) {
       childImageSharp {
-        fluid(maxHeight: 715, maxWidth: 2000) {
+        fluid(maxHeight: 715, maxWidth: 2000, quality: 80) {
           ...GatsbyImageSharpFluid
         }
       }
