@@ -86,7 +86,7 @@ export default function contactSection(props) {
                 </div>
               </div>
             </div>
-            <button className="btn btn-primary btn-block">
+            <button type="submit" className="btn btn-primary btn-block">
               <span className="font-weight-bold mr-2 pointer">
                 {props.cms.send_button_text}
               </span>
