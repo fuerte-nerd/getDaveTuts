@@ -2,12 +2,14 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 import { Button } from "reactstrap"
 
 export default function Thanks() {
   return (
     <Layout>
+      <SEO title="Thanks" />
       <div className="min-vh-100 d-flex justify-content-center align-items-center container">
         <div className="animated bounceInDown text-center">
           <h1 className="border-bottom border-primary pb-2 mb-4">

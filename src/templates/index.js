@@ -51,8 +51,8 @@ export default function Index({ data }) {
       <NavBar isOpen={isOpen} toggle={toggle} cms={navData} />
       <div onClick={checkNav}>
         <Hero cms={heroData} />
-        <Tuts cms={tutsData} />
-        <Contact cms={contactData} />
+          <Tuts cms={tutsData} />
+          <Contact cms={contactData} />
       </div>
     </Layout>
   )
