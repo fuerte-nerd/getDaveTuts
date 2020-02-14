@@ -60,6 +60,7 @@ export default function contactSection(props) {
                     className="form-control text-cursor"
                     id="name"
                     placeholder="John Doe"
+                    name="name"
                   />
                 </div>
               </div>
@@ -71,6 +72,7 @@ export default function contactSection(props) {
                     className="form-control text-cursor"
                     id="email"
                     placeholder="johndoe@example.com"
+                    name="email"
                   />
                 </div>
               </div>
@@ -83,6 +85,7 @@ export default function contactSection(props) {
                     className="form-control text-cursor"
                     id="message"
                     rows="3"
+                    name="message"
                   ></textarea>
                 </div>
               </div>
