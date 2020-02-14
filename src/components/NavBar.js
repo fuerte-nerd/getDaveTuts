@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { graphql } from "gatsby"
 import {
   Collapse,
   Navbar,
@@ -133,7 +134,7 @@ export default function NavBar(props) {
               </Scroll.Link>
             </NavItem>
             <NavItem>
-            <Scroll.Link
+              <Scroll.Link
                 activeClass="active"
                 className="nav-link"
                 smooth={true}
@@ -166,8 +167,10 @@ export default function NavBar(props) {
                   }}
                   onClick={props.toggle}
                 >
-                  <i class="fab fa-facebook mr-2 pointer" />
-                  <a href="#">Facebook</a>
+                  <a href={props.cms.facebook}>
+                    <i className="fab fa-facebook mr-2 pointer" />
+                    Facebook
+                  </a>
                 </DropdownItem>
                 <DropdownItem
                   style={{
@@ -175,8 +178,10 @@ export default function NavBar(props) {
                   }}
                   onClick={props.toggle}
                 >
-                  <i class="fab fa-github mr-2 pointer" />
-                  <a href="#">GitHub</a>
+                  <a href={props.cms.github}>
+                    <i className="fab fa-github mr-2 pointer" />
+                    GitHub
+                  </a>
                 </DropdownItem>
                 <DropdownItem
                   style={{
@@ -184,8 +189,10 @@ export default function NavBar(props) {
                   }}
                   onClick={props.toggle}
                 >
-                  <i class="fab fa-instagram mr-2 pointer" />
-                  <a href="#">Instagram</a>
+                  <a href={props.cms.instagram}>
+                    <i className="fab fa-instagram mr-2 pointer" />
+                    Instagram
+                  </a>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

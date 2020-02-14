@@ -10,6 +10,8 @@ collections:
       - label: "Contact Settings"
         name: "contact_settings"
         file: "content/contact_settings.md"
+        editor:
+          preview: false
         fields:
           - { name: email, label: Email address, widget: string }
           - { name: phone, label: Phone number, widget: string }
@@ -17,6 +19,8 @@ collections:
       - label: "Social Settings"
         name: "social_settings"
         file: "content/social_settings.md"
+        editor:
+          preview: false
         fields:
           - { name: facebook, label: Facebook URL, widget: string }
           - { name: github, label: GitHub URL, widget: string }
@@ -34,15 +38,28 @@ collections:
       - label: "Tuts Section"
         name: "tuts"
         file: "content/tuts.md"
+        editor:
+          preview: false
         fields:
           - { name: heading, label: Heading, widget: string }
           - { name: lead, label: Lead, widget: text }
           - { name: followup_heading, label: Follow-up Heading, widget: string }
           - { name: followup_text, label: Follow-up Text, widget: text }
           - { name: followup_button_text, label: Follow-up Button Text, widget: string }
+      - label: "Tuts Pages"
+        name: "tuts"
+        file: "content/tuts_pages.md"
+        editor:
+          preview: false
+        fields:
+          - { name: followup_heading, label: Follow-up Heading, widget: string }
+          - { name: followup_text, label: Follow-up Text, widget: text }
+          - { name: followup_facebook_button_text, label: Follow-up Facebook Button Text, widget: string }
       - label: "Contact Section"
         name: "contact"
         file: "content/contact.md"
+        editor:
+          preview: false
         fields:
           - { name: heading, label: Heading, widget: string }
           - { name: lead, label: Lead, widget: text }

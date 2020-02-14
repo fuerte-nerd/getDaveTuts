@@ -27,7 +27,11 @@ html {
   font-size: 18px !important;
 }
 
-* {
+p,
+h1,
+h2,
+h3,
+h4 {
   cursor: default;
 }
 
@@ -36,16 +40,12 @@ a {
 }
 
 pre {
-  background-color: lighten($dark, 15%);
-  padding: 3rem;
+  padding: 3rem !important;
   border-radius: 0.25rem;
   box-shadow: 0 0rem 0.45rem inset $dark;
-  color: $light;
-}
-
-code {
-  white-space: pre-wrap !important;
-  font-weight: 600;
+  & code {
+    white-space: pre-wrap !important;
+  }
 }
 
 blockquote {
@@ -77,7 +77,8 @@ blockquote {
   }
 }
 
-.nav-link, .dropdown-item {
+.nav-link,
+.dropdown-item {
   transition: transform 0.15s !important;
 }
 
@@ -102,15 +103,14 @@ blockquote {
 
   &_profile-pic {
     width: 80%;
-    max-width: 20rem;
+    max-width: 18rem;
+    max-height: 18rem;
     margin: 0 auto;
-    display: block;
+    display: block !important;
     box-shadow: 0 0rem 0.7rem;
   }
 
   &_scroll-down {
-    bottom: 0;
-    margin-bottom: 1rem;
   }
 
   &_contact-btn {
@@ -130,8 +130,13 @@ blockquote {
     font-size: 2rem;
   }
 
-  &_tutorial-content p {
-    padding: 0.5rem 0;
+  &_tutorial-content {
+    & p {
+      padding: 0.5rem 0;
+    }
+    & img {
+      border-radius: .25rem;
+    }
   }
 }
 

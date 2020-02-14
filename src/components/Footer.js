@@ -2,10 +2,10 @@ import React from "react"
 
 export default function Footer() {
   return (
-    <footer class="text-primary text-center p-3">
+    <footer className="text-primary text-center p-3">
       <small>
         all content &copy; 2020{" "}
-        <a href="mailto:fuertenerd@gmail.com" class="text-dark">
+        <a href="mailto:fuertenerd@gmail.com" className="text-dark">
           fuertenerd
         </a>
       </small>
