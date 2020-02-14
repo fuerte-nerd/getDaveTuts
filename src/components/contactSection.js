@@ -2,6 +2,10 @@ import React from "react"
 import { Container, Row, Col, Button } from "reactstrap"
 
 export default function contactSection(props) {
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    console.log(e.currentTarget)
+  }
   return (
     <section
       className="min-vh-100 d-flex align-items-center bg-light text-primary position-relative shadow"
@@ -49,7 +53,7 @@ export default function contactSection(props) {
         <div className="bg-secondary text-primary p-4 mt-3 rounded">
           {props.cms.contact_form_intro}
           <hr />
-          <form name="contact" method="post" netlify-honeypot="bot-field" data-netlify="true" className="mt-3">
+          <form action="/thanks" name="contact" method="post" netlify-honeypot="bot-field" data-netlify="true" className="mt-3" onSubmit={handleSubmit}>
           <input type="hidden" name="bot-field" />
             <div className="row">
               <div className="col-md-6">
