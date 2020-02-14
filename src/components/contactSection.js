@@ -49,7 +49,8 @@ export default function contactSection(props) {
         <div className="bg-secondary text-primary p-4 mt-3 rounded">
           {props.cms.contact_form_intro}
           <hr />
-          <form name="contact" method="POST" data-netlify="true" className="mt-3">
+          <form name="contact" method="post" netlify-honeypot="bot-field" data-netlify="true" className="mt-3">
+          <input type="hidden" name="bot-field" />
             <div className="row">
               <div className="col-md-6">
                 <div className="form-group">
