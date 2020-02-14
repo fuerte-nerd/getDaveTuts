@@ -2,7 +2,7 @@
 - [x] bring the relevant 'find me' links from the cms into the navbar
 - [x] fix the scroll down button for landscape phone
 - [x] make the index template go to root instead of test
-- [ ] bring in the layout for the tutorials template
+- [x] bring in the layout for the tutorials template
 - [ ] create the getDaveTuts logo
 - [ ] make the intro text for the contact form bigger
 - [ ] hook up contact form to netlify form functions

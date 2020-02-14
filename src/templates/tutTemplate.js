@@ -9,7 +9,7 @@ import { Container, Button } from "reactstrap"
 
 export default function TutTemplate({ data }) {
   const post = data.content.childMarkdownRemark.frontmatter
-
+  const followUp = data.tut_pages.childMarkdownRemark.frontmatter
   return (
     <Layout>
       <Link
@@ -39,15 +39,14 @@ export default function TutTemplate({ data }) {
           />
           <div className="addthis_inline_share_toolbox text-center" />
           <div className="bg-primary text-secondary p-4 rounded mt-4 text-center">
-            <h3>I hope you found this tutorial useful!</h3>
+            <h3>{followUp.followup_heading}</h3>
             <p>
-              If so, head on over to Facebook and hit the Like button! I'll post
-              on there whenever I have new content for you!
+            {followUp.followup_text}
             </p>
             <div className="text-center">
-              <Button href="#" color="light" size="sm" className="d-inline-flex align-items-center">
+              <Button href={data.facebook_link.childMarkdownRemark.frontmatter.facebook} color="light" size="sm" className="d-inline-flex align-items-center">
                 <span className="font-weight-bold mr-2">
-                  Check out my Facebook
+                {followUp.followup_facebook_button_text}
                 </span>
                 <i class="fab fa-facebook-square  cmp_facebook-btn pointer" />
               </Button>
@@ -76,6 +75,22 @@ export const query = graphql`
       childImageSharp {
         fluid(maxHeight: 715, maxWidth: 2000) {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    tut_pages: file(name: { eq: "tuts_pages" }) {
+      childMarkdownRemark {
+        frontmatter {
+          followup_facebook_button_text
+          followup_heading
+          followup_text
+        }
+      }
+    }
+    facebook_link: file(name: { eq: "social_settings" }) {
+      childMarkdownRemark {
+        frontmatter {
+          facebook
         }
       }
     }
