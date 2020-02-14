@@ -55,7 +55,6 @@ export default function NavBar(props) {
     checkWindowState()
   }, [])
 
-  console.log(props.cms)
   return (
     <div>
       <Navbar

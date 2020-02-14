@@ -40,10 +40,7 @@ export default function Index({ data }) {
     ...data.contact_settings.childMarkdownRemark.frontmatter,
   }
 
-  const navData = {
-    ...data.social_settings.childMarkdownRemark.frontmatter,
-    ...data.navbar_logo.childImageSharp
-  }
+  const navData = data.social_settings.childMarkdownRemark.frontmatter
 
   return (
     <Layout>
