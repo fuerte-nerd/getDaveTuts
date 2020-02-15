@@ -57,13 +57,6 @@ export default function Index({ data }) {
 
 export const query = graphql`
   query($hero_image: String!) {
-    navbar_logo: file(name: {eq: "navbarLogo"}) {
-      childImageSharp {
-        fixed(width: 300, quality: 100){
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
     hero_content: file(
       sourceInstanceName: { eq: "content" }
       name: { eq: "hero" }
@@ -78,7 +71,7 @@ export const query = graphql`
 
     hero_image: file(relativePath: { eq: $hero_image }) {
       childImageSharp {
-        fixed(height: 600, width: 600, grayscale: true) {
+        fixed(height: 510, width: 510, duotone: { highlight: "#fafafa", shadow: "#08413f" }) {
           ...GatsbyImageSharpFixed
         }
       }

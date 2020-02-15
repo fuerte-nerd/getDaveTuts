@@ -4,8 +4,6 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import { Button } from "reactstrap"
-
 export default function Thanks() {
   return (
     <Layout>

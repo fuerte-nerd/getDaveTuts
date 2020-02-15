@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React from "react"
 import * as Scroll from "react-scroll"
 import Img from "gatsby-image"
 import { Container } from "reactstrap"
