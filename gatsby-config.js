@@ -132,7 +132,7 @@ module.exports = {
         background_color: `#61d085`,
         theme_color: `#08413f`,
         display: `minimal-ui`,
-        icon: `src/images/icon.png`,
+        icon: `static/assets/site_assets/circle_logo_512.png`,
       },
     },
     `gatsby-plugin-sass`,
