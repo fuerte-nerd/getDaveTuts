@@ -11,6 +11,7 @@ tags:
   - netlify
   - netlifycms
   - blog
+  - tits
 ---
 You will need the following installed on your development machine...
 
