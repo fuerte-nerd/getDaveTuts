@@ -1,4 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
+import { connect } from "react-redux"
+import { toggleNavbar } from "../redux/actions"
 
 import { graphql } from "gatsby"
 
@@ -11,45 +13,40 @@ import Hero from "../components/heroSection"
 import Tuts from "../components/tutsSection"
 import Contact from "../components/contactSection"
 
-export default function Index({ data }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => {
-    if (window.innerWidth < 992) {
-      setIsOpen(!isOpen)
-    }
-  }
-
-  const checkNav = () => {
-    if (isOpen) {
-      setIsOpen(false)
+function Index(props) {
+  const checkNav = e => {
+    if (props.navIsOpen && window.innerWidth < 992) {
+      props.dispatch(toggleNavbar())
     }
   }
 
   const heroData = {
-    ...data.hero_content.childMarkdownRemark.frontmatter,
-    hero_image: data.hero_image.childImageSharp.fixed,
+    ...props.data.hero_content.childMarkdownRemark.frontmatter,
+    hero_image: props.data.hero_image.childImageSharp.fixed,
   }
 
   const tutsData = {
-    ...data.tuts_content.childMarkdownRemark.frontmatter,
-    ...data.social_settings.childMarkdownRemark.frontmatter
+    ...props.data.tuts_content.childMarkdownRemark.frontmatter,
+    ...props.data.social_settings.childMarkdownRemark.frontmatter,
+    posts: props.data.tutorial_posts.edges,
   }
 
   const contactData = {
-    ...data.contact_content.childMarkdownRemark.frontmatter,
-    ...data.contact_settings.childMarkdownRemark.frontmatter,
+    ...props.data.contact_content.childMarkdownRemark.frontmatter,
+    ...props.data.contact_settings.childMarkdownRemark.frontmatter,
   }
 
-  const navData = data.social_settings.childMarkdownRemark.frontmatter
+  const navData = props.data.social_settings.childMarkdownRemark.frontmatter
 
   return (
     <Layout>
       <SEO title="Home" />
-      <NavBar isOpen={isOpen} toggle={toggle} cms={navData} />
-      <div onClick={checkNav}>
+      <NavBar cms={navData} />
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+      <div onClick={checkNav} role="button" tabIndex="0">
         <Hero cms={heroData} />
-          <Tuts cms={tutsData} />
-          <Contact cms={contactData} />
+        <Tuts cms={tutsData} />
+        <Contact cms={contactData} />
       </div>
     </Layout>
   )
@@ -71,7 +68,11 @@ export const query = graphql`
 
     hero_image: file(relativePath: { eq: $hero_image }) {
       childImageSharp {
-        fixed(height: 510, width: 510, duotone: { highlight: "#fafafa", shadow: "#08413f" }) {
+        fixed(
+          height: 510
+          width: 510
+          duotone: { highlight: "#fafafa", shadow: "#08413f" }
+        ) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -125,5 +126,31 @@ export const query = graphql`
         }
       }
     }
+    tutorial_posts: allFile(
+      filter: { sourceInstanceName: { eq: "tutorials" } }
+    ) {
+      edges {
+        node {
+          childMarkdownRemark {
+            frontmatter {
+              title
+              tags
+              date(formatString: "D/M/YYYY")
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
   }
 `
+
+const mapStateToProps = state => {
+  return {
+    navIsOpen: state.nav.isOpen,
+  }
+}
+
+export default connect(mapStateToProps)(Index)

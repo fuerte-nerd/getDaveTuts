@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
+import { connect } from "react-redux"
+import { toggleNavbar } from "../redux/actions"
 import {
   Collapse,
   Navbar,
@@ -12,7 +14,7 @@ import {
 
 import * as Scroll from "react-scroll"
 
-export default function NavBar(props) {
+function NavBar(props) {
   const initialState = {
     addClasses: "bg-transparent",
     scaling: 1,
@@ -23,35 +25,67 @@ export default function NavBar(props) {
     navPadding: 2,
   }
 
-  const checkWindowState = () => {
-    let state = Object.assign({}, initialState)
+  const [navBarProps, setNavBarProps] = useState(initialState)
 
-    if (window.innerWidth < 992) {
-      state.collapseClasses = "bg-light p-4 mt-2"
-    }
+  const [isNavOpen, setIsNavOpen] = useState(false)
 
-    if (window.scrollY === 0) {
-      setNavBarProps(state)
-    } else {
-      setNavBarProps({
-        ...state,
-        addClasses: "bg-light shadow-sm",
-        scaling: 0.9,
-        logoClass: "h4",
-        logoSpanClass: "text-secondary",
-        togglerFontSize: "1.1rem",
-        navPadding: 1,
-      })
+  const myNavRef = useRef(isNavOpen)
+
+  useEffect(() => {
+    setIsNavOpen(props.isOpen)
+    myNavRef.current = props.isOpen
+  }, [props.isOpen])
+
+  const checkNav = e => {
+    if (e.type === "keyup") {
+      if (e.code === "Escape") {
+        if (myNavRef.current && window.innerWidth < 992) {
+          toggleNav()
+          return
+        }
+      }
     }
   }
 
-  const [navBarProps, setNavBarProps] = useState(initialState)
-
   useEffect(() => {
+    const checkWindowState = () => {
+      let state = Object.assign({}, initialState)
+
+      if (window.innerWidth < 992) {
+        state.collapseClasses = "bg-light p-4 mt-2"
+      }
+
+      if (window.scrollY === 0) {
+        setNavBarProps(state)
+      } else {
+        setNavBarProps({
+          ...state,
+          addClasses: "bg-light shadow-sm",
+          scaling: 0.9,
+          logoClass: "h4",
+          logoSpanClass: "text-secondary",
+          togglerFontSize: "1.1rem",
+          navPadding: 1,
+        })
+      }
+    }
+
     window.addEventListener("scroll", checkWindowState)
     window.addEventListener("resize", checkWindowState)
+    window.addEventListener("keyup", checkNav)
     checkWindowState()
+
+    return () => {
+      window.removeEventListener("scroll", checkWindowState)
+      window.removeEventListener("resize", checkWindowState)
+      window.removeEventListener("keyup", checkNav)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const toggleNav = () => {
+    props.dispatch(toggleNavbar())
+  }
 
   return (
     <div>
@@ -71,14 +105,14 @@ export default function NavBar(props) {
           to="home"
         >
           <div className={`${navBarProps.logoClass} cmp_brand p-0 m-0 pointer`}>
-            getDaveTuts<span className={`${navBarProps.logoSpanClass}`}>()</span>
+            getDaveTuts
+            <span className={`${navBarProps.logoSpanClass}`}>()</span>
           </div>
-          
         </Scroll.Link>
         <button
           className="navbar-toggler bg-light border border-primary p-2"
           type="button"
-          onClick={props.toggle}
+          onClick={toggleNav}
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
@@ -95,7 +129,7 @@ export default function NavBar(props) {
         </button>
 
         <Collapse
-          isOpen={props.isOpen}
+          isOpen={isNavOpen}
           navbar
           className={`${navBarProps.collapseClasses} text-center rounded`}
         >
@@ -112,7 +146,7 @@ export default function NavBar(props) {
                 style={{
                   transform: `scale(${navBarProps.scaling})`,
                 }}
-                onClick={props.toggle}
+                onClick={toggleNav}
               >
                 Home
               </Scroll.Link>
@@ -129,7 +163,7 @@ export default function NavBar(props) {
                 style={{
                   transform: `scale(${navBarProps.scaling})`,
                 }}
-                onClick={props.toggle}
+                onClick={toggleNav}
               >
                 The Tuts
               </Scroll.Link>
@@ -146,7 +180,7 @@ export default function NavBar(props) {
                 style={{
                   transform: `scale(${navBarProps.scaling})`,
                 }}
-                onClick={props.toggle}
+                onClick={toggleNav}
               >
                 Contact
               </Scroll.Link>
@@ -166,7 +200,7 @@ export default function NavBar(props) {
                   style={{
                     transform: `scale(${navBarProps.scaling})`,
                   }}
-                  onClick={props.toggle}
+                  onClick={toggleNav}
                 >
                   <a href={props.cms.facebook}>
                     <i className="fab fa-facebook mr-2 pointer" />
@@ -177,7 +211,7 @@ export default function NavBar(props) {
                   style={{
                     transform: `scale(${navBarProps.scaling})`,
                   }}
-                  onClick={props.toggle}
+                  onClick={toggleNav}
                 >
                   <a href={props.cms.github}>
                     <i className="fab fa-github mr-2 pointer" />
@@ -188,7 +222,7 @@ export default function NavBar(props) {
                   style={{
                     transform: `scale(${navBarProps.scaling})`,
                   }}
-                  onClick={props.toggle}
+                  onClick={toggleNav}
                 >
                   <a href={props.cms.instagram}>
                     <i className="fab fa-instagram mr-2 pointer" />
@@ -203,3 +237,9 @@ export default function NavBar(props) {
     </div>
   )
 }
+
+const mapStateToProps = state => ({
+  isOpen: state.nav.isOpen,
+})
+
+export default connect(mapStateToProps)(NavBar)

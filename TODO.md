@@ -8,5 +8,5 @@
 - [x] make the intro text for the contact form bigger
 - [x] hook up contact form to netlify form functions
 - [x] bring in react-reveal
-- [ ] bring circular logo into netlify cms so it shows on cpanel
+- [x] bring circular logo into netlify cms so it shows on cpanel
 - [ ] write the code for the tuts directory

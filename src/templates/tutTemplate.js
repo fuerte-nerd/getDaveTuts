@@ -14,7 +14,7 @@ export default function TutTemplate({ data }) {
     <Layout>
       <Link
         to="/"
-        className="btn btn-block bg-light fixed-top animated fadeInDown delay-4s shadow"
+        className="btn btn-block bg-light fixed-top animated fadeInDown delay-3s shadow"
       >
         Find more tutorials at <span className="h5 pointer">getDaveTuts</span>
       </Link>
@@ -48,7 +48,7 @@ export default function TutTemplate({ data }) {
                 <span className="font-weight-bold mr-2">
                 {followUp.followup_facebook_button_text}
                 </span>
-                <i class="fab fa-facebook-square  cmp_facebook-btn pointer" />
+                <i className="fab fa-facebook-square  cmp_facebook-btn pointer" />
               </Button>
             </div>
           </div>
