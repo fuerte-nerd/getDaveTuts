@@ -26,9 +26,9 @@ export default function TutsSection(props) {
         if (tag.toLowerCase().includes(string.toLowerCase())) {
           return filteredArr.push(post)
         }
-        return null;
+        return null
       })
-      return null;
+      return null
     })
 
     setPostsData(filteredArr)
@@ -59,11 +59,7 @@ export default function TutsSection(props) {
           </div>
         </Fade>
         <Fade up>
-          <ListGroup flush className="mb-3">
-            <ListGroupItem className="bg-dark">
-              <span className="float-left font-weight-bold">Title</span>
-              <span className="float-right font-weight-bold">Date</span>
-            </ListGroupItem>
+          <ListGroup className="mb-3">
             {postsData ? (
               postsData.length > 0 ? (
                 postsData.map((post, i) => {
@@ -72,27 +68,16 @@ export default function TutsSection(props) {
                       <ListGroupItem action>
                         <Link
                           to={post.node.childMarkdownRemark.fields.slug}
-                          style={{
-                            display: "block",
-                          }}
-                          className="clearfix"
+                          className="btn btn-block text-left"
                         >
-                          <div className="d-block">
-                            <span
-                              style={{
-                                float: "left",
-                              }}
-                            >
-                              {post.node.childMarkdownRemark.frontmatter.title}
-                            </span>
-                            <span
-                              style={{
-                                float: "right",
-                              }}
-                            >
+                          <span className="lead">
+                            {post.node.childMarkdownRemark.frontmatter.title}
+                          </span>
+                          <span className="d-block text-right text-muted">
+                            <small>
                               {post.node.childMarkdownRemark.frontmatter.date}
-                            </span>
-                          </div>
+                            </small>
+                          </span>
                         </Link>
                       </ListGroupItem>
                     </Fade>

@@ -3,7 +3,6 @@ import Helmet from "react-helmet"
 
 import "./styles.scss"
 
-import Scripts from "./scripts"
 import Footer from "./Footer"
 
 export default function Layout({ children }) {
@@ -21,7 +20,6 @@ export default function Layout({ children }) {
       </Helmet>
       {children}
       <Footer />
-      <Scripts />
     </>
   )
 }

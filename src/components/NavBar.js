@@ -84,7 +84,9 @@ function NavBar(props) {
   }, [])
 
   const toggleNav = () => {
-    props.dispatch(toggleNavbar())
+    if (window.innerWidth < 992) {
+      props.dispatch(toggleNavbar())
+    }
   }
 
   return (

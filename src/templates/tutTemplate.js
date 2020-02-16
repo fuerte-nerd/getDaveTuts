@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Helmet from "react-helmet"
 
 import Img from "gatsby-image"
 
@@ -12,6 +13,12 @@ export default function TutTemplate({ data }) {
   const followUp = data.tut_pages.childMarkdownRemark.frontmatter
   return (
     <Layout>
+      <Helmet>
+    <script
+        type="text/javascript"
+        src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e4016dcd93e0036"
+      ></script>
+    </Helmet>
       <Link
         to="/"
         className="btn btn-block bg-light fixed-top animated fadeInDown delay-3s shadow"

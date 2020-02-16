@@ -1,7 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
 import { toggleNavbar } from "../redux/actions"
-
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -12,6 +11,8 @@ import NavBar from "../components/NavBar"
 import Hero from "../components/heroSection"
 import Tuts from "../components/tutsSection"
 import Contact from "../components/contactSection"
+
+import Share from "../components/Share"
 
 function Index(props) {
   const checkNav = e => {
@@ -38,6 +39,8 @@ function Index(props) {
 
   const navData = props.data.social_settings.childMarkdownRemark.frontmatter
 
+  const metaData = props.data.metadata.siteMetadata
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -45,6 +48,7 @@ function Index(props) {
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <div onClick={checkNav} role="button" tabIndex="0">
         <Hero cms={heroData} />
+        <Share metaData={metaData} />
         <Tuts cms={tutsData} />
         <Contact cms={contactData} />
       </div>
@@ -142,6 +146,14 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    metadata: site {
+      siteMetadata {
+        title
+        description
+        author
+        url
       }
     }
   }
