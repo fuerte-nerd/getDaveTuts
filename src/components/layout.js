@@ -5,7 +5,7 @@ import "./styles.scss"
 
 import Footer from "./Footer"
 
-export default function Layout({ children }) {
+export default function Layout(props) {
   return (
     <>
       <Helmet>
@@ -18,8 +18,11 @@ export default function Layout({ children }) {
           crossorigin="anonymous"
         ></script>
       </Helmet>
-      {children}
-      <Footer />
+      {props.children}
+      <Footer
+        showShare={props.showShare}
+        metaData={props.showShare ? props.metaData : null}
+      />
     </>
   )
 }

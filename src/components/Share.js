@@ -1,76 +1,82 @@
 import React from "react"
 import {
   FacebookShareButton,
-  GooglePlusShareButton,
   LinkedinShareButton,
   TwitterShareButton,
   WhatsappShareButton,
   RedditShareButton,
 } from "react-share"
 
-export default function Share({ socialConfig, tags }) {
+import Fade from "react-reveal/Fade"
+
+import "./Share.scss"
+
+export default function Share(props) {
+
+  const titleHack = (e)=>{
+      e.currentTarget.removeAttribute('title')
+  }
+
+
   return (
-    <div className="post-social">
-      <FacebookShareButton
-        url={socialConfig.config.url}
-        className="button is-outlined is-rounded facebook"
-      >
-        <span className="icon">
-          <i className="fab facebook-f" />
-        </span>
-        <span className="text">Facebook</span>
-      </FacebookShareButton>
-      <TwitterShareButton
-        url={socialConfig.config.url}
-        className="button is-outlined is-rounded twitter"
-        title={socialConfig.config.title}
-        via={socialConfig.twitterHandle.split("@").join("")}
-        hashtags={tags}
-      >
-        <span className="icon">
-          <i className="fab twitter" />
-        </span>
-        <span className="text">Twitter</span>
-      </TwitterShareButton>
-      <GooglePlusShareButton
-        url={socialConfig.config.url}
-        className="button is-outlined is-rounded googleplus"
-      >
-        <span className="icon">
-          <i className="fab google-plus-g" />
-        </span>
-        <span className="text">Google+</span>
-      </GooglePlusShareButton>
-      <LinkedinShareButton
-        url={socialConfig.config.url}
-        className="button is-outlined is-rounded linkedin"
-        title={socialConfig.config.title}
-      >
-        <span className="icon">
-          <i className="fab linked-in" />
-        </span>
-        <span className="text">LinkedIn</span>
-      </LinkedinShareButton>
-      <RedditShareButton
-        url={socialConfig.config.url}
-        className="button is-outlined is-rounded reddit"
-        title={socialConfig.config.title}
-      >
-        <span className="icon">
-          <i className="fab reddit-alien" />
-        </span>
-        <span className="text">Reddit</span>
-      </RedditShareButton>
-      <WhatsappShareButton
-        url={socialConfig.config.url}
-        className="button is-outlined is-rounded whatsapp"
-        title={socialConfig.config.title}
-      >
-        <span className="icon">
-          <i className="fab whatsApp" />
-        </span>
-        <span className="text">WhatsApp</span>
-      </WhatsappShareButton>
-    </div>
+    <Fade up>
+      <div className="post-social">
+        <FacebookShareButton
+          url={props.metaData.url}
+          className="button facebook"
+        >
+          <span className="icon">
+            <i className="fab fa-facebook-f d-block" />
+          </span>
+        </FacebookShareButton>
+        <TwitterShareButton
+          url={props.metaData.url}
+          className="button twitter"
+          title={props.metaData.title}
+          onMouseOver={titleHack}
+          onFocus={titleHack}
+          // via={socialConfig.twitterHandle.split("@").join("")}
+          // hashtags={tags}
+        >
+          <span className="icon">
+            <i className="fab fa-twitter d-block" />
+          </span>
+        </TwitterShareButton>
+        <LinkedinShareButton
+          url={props.metaData.url}
+          className="button linkedin"
+          title={props.metaData.title}
+          onMouseOver={titleHack}
+          onFocus={titleHack}
+        >
+          <span className="icon">
+            <i className="fab fa-linkedin-in d-block" />
+          </span>
+        </LinkedinShareButton>
+        <RedditShareButton
+          url={props.metaData.url}
+          className="button reddit"
+          title={props.metaData.title}
+          onMouseOver={titleHack}
+          onFocus={titleHack}
+        >
+          <span className="icon">
+            <i className="fab fa-reddit-alien d-block" />
+          </span>
+        </RedditShareButton>
+        <WhatsappShareButton
+          url={props.metaData.url}
+          className="button whatsapp"
+          title={props.metaData.title}
+          onMouseOver={titleHack}
+          onFocus={titleHack}
+          separator=": "
+        >
+          <span className="icon">
+            <i className="fab fa-whatsapp d-block" />
+          </span>
+        </WhatsappShareButton>
+      </div>
+    </Fade>
   )
 }

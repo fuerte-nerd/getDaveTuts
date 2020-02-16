@@ -12,7 +12,6 @@ import Hero from "../components/heroSection"
 import Tuts from "../components/tutsSection"
 import Contact from "../components/contactSection"
 
-import Share from "../components/Share"
 
 function Index(props) {
   const checkNav = e => {
@@ -42,13 +41,12 @@ function Index(props) {
   const metaData = props.data.metadata.siteMetadata
 
   return (
-    <Layout>
+    <Layout showShare={true} metaData={metaData}>
       <SEO title="Home" />
       <NavBar cms={navData} />
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <div onClick={checkNav} role="button" tabIndex="0">
         <Hero cms={heroData} />
-        <Share metaData={metaData} />
         <Tuts cms={tutsData} />
         <Contact cms={contactData} />
       </div>
