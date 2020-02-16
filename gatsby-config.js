@@ -3,7 +3,7 @@ module.exports = {
     title: `getDaveTuts`,
     description: `Easily-digestable development tutorials`,
     author: `fuertenerd`,
-    url: `https://quirky-saha-5af3f5.netlify.com/`
+    url: `https://quirky-saha-5af3f5.netlify.com`
   },
   plugins: [
     {

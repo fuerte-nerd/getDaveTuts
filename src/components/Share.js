@@ -7,8 +7,6 @@ import {
   RedditShareButton,
 } from "react-share"
 
-import Fade from "react-reveal/Fade"
-
 import "./Share.scss"
 
 export default function Share(props) {
@@ -19,8 +17,7 @@ export default function Share(props) {
 
 
   return (
-    <Fade up>
-      <div className="post-social">
+      <div className="post-social animated fadeIn">
         <FacebookShareButton
           url={props.metaData.url}
           className="button facebook"
@@ -77,6 +74,5 @@ export default function Share(props) {
           </span>
         </WhatsappShareButton>
       </div>
-    </Fade>
   )
 }

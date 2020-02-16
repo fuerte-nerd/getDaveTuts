@@ -3,15 +3,16 @@ import { connect } from "react-redux"
 import { toggleNavbar } from "../redux/actions"
 import { graphql } from "gatsby"
 
+import Helmet from "react-helmet"
+
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+// import SEO from "../components/seo"
 
 import NavBar from "../components/NavBar"
 
 import Hero from "../components/heroSection"
 import Tuts from "../components/tutsSection"
 import Contact from "../components/contactSection"
-
 
 function Index(props) {
   const checkNav = e => {
@@ -42,7 +43,25 @@ function Index(props) {
 
   return (
     <Layout showShare={true} metaData={metaData}>
-      <SEO title="Home" />
+      {/* <SEO title="Home" /> */}
+      <Helmet>
+        <meta property="og:title" content={metaData.title} />
+        <meta
+          property="og:description"
+          content={metaData.description}
+        />
+        <meta
+          property="og:image"
+          content={`${metaData.url}/assets/site_assets/ogimage.png`}
+        />
+        <meta
+          property="og:url"
+          content={metaData.url}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:site_name" content={metaData.title} />
+        <meta name="twitter:image:alt" content="Bite-sized development tutorials!" />
+      </Helmet>
       <NavBar cms={navData} />
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <div onClick={checkNav} role="button" tabIndex="0">
