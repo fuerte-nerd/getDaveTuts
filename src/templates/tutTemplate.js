@@ -131,7 +131,7 @@ export default function TutTemplate({ data }) {
                   <Disqus.CommentCount
                     shortname={disqusShortname}
                     config={disqusConfig}
-                  >Comments</Disqus.CommentCount>
+                  ></Disqus.CommentCount>
                 </small>
                 )
               </Button>
