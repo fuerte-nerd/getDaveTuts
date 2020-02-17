@@ -8,6 +8,7 @@
     "animate.css": "^3.7.2",
     "bootstrap": "^4.4.1",
     "concurrently": "^5.1.0",
+    "disqus-react": "^1.0.7",
     "gatsby": "^2.19.7",
     "gatsby-background-image": "^0.9.14",
     "gatsby-cli": "^2.8.29",

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link, graphql } from "gatsby"
 
 import Helmet from "react-helmet"
@@ -8,9 +8,14 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 import Share from "../components/Share"
 
+import Comments from "../components/Comments"
+
+import Disqus from "disqus-react"
+
 import { Container, Button } from "reactstrap"
 
 export default function TutTemplate({ data }) {
+  const [showComments, setShowComments] = useState(false)
   const post = data.content.childMarkdownRemark.frontmatter
   const followUp = data.tut_pages.childMarkdownRemark.frontmatter
 
@@ -21,6 +26,17 @@ export default function TutTemplate({ data }) {
     title: `${data.metadata.siteMetadata.title} - ${data.content.childMarkdownRemark.frontmatter.title}`,
   }
 
+  const disqusShortname = "getdavetuts"
+  const disqusConfig = {
+    url: shareConfig.url.substring(0, shareConfig.url.length - 1),
+    identifier: data.content.id,
+    title: post.title,
+  }
+
+  const toggleComments = () => {
+    setShowComments(!showComments)
+  }
+
   return (
     <Layout>
       <Helmet>
@@ -28,14 +44,23 @@ export default function TutTemplate({ data }) {
         <meta property="og:description" content={post.intro_text} />
         <meta
           property="og:image"
-          content={data.metadata.siteMetadata.url + data.og_image.childImageSharp.resize.src}
+          content={
+            data.metadata.siteMetadata.url +
+            data.og_image.childImageSharp.resize.src
+          }
         />
         <meta
           property="og:url"
-          content={data.metadata.siteMetadata.url + data.content.childMarkdownRemark.fields.slug}
+          content={
+            data.metadata.siteMetadata.url +
+            data.content.childMarkdownRemark.fields.slug
+          }
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:site_name" content={data.metadata.siteMetadata.title} />
+        <meta
+          property="og:site_name"
+          content={data.metadata.siteMetadata.title}
+        />
         <meta
           name="twitter:image:alt"
           content="Bite-sized development tutorials!"
@@ -86,6 +111,32 @@ export default function TutTemplate({ data }) {
               </Button>
             </div>
           </div>
+          {showComments ? (
+            <div className="text-center mt-3">
+              <Button color="primary" outline block size="lg" onClick={toggleComments}>Hide Discussion</Button>
+              <div className="bg-primary mt-3 py-3 px-4 rounded">
+                <span className="">
+                  <Comments
+                    disqusShortname={disqusShortname}
+                    disqusConfig={disqusConfig}
+                  />
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center mt-3">
+              <Button color="primary" outline block size="lg" onClick={toggleComments}>
+                Show Discussion (
+                <small>
+                  <Disqus.CommentCount
+                    shortname={disqusShortname}
+                    config={disqusConfig}
+                  >Comments</Disqus.CommentCount>
+                </small>
+                )
+              </Button>
+            </div>
+          )}
         </Container>
       </section>
     </Layout>
